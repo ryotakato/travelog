@@ -19,5 +19,6 @@
 <textarea name="content" style="width:900px; height:600px;">${f:h(content)}</textarea><br/>
 <input type="submit" value="記事を投稿する">
 </form>
+
 </body>
 </html>
