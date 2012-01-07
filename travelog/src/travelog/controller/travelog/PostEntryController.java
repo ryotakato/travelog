@@ -7,7 +7,7 @@ public class PostEntryController extends Controller {
 
     @Override
     public Navigation run() throws Exception {
-        // TODO 何番目の記事かわかるようにする
+        // TODO 現在投稿されている記事数を検索して、何番目の記事かわかるようにする
         return forward("postEntry.jsp");
     }
 }

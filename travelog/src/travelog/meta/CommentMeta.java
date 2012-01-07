@@ -1,6 +1,6 @@
 package travelog.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2012-01-07 02:41:25")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2012-01-07 22:19:33")
 /** */
 public final class CommentMeta extends org.slim3.datastore.ModelMeta<travelog.model.Comment> {
 

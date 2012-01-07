@@ -1,6 +1,6 @@
 package travelog.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2012-01-07 02:41:25")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2012-01-07 22:19:32")
 /** */
 public final class EntryMeta extends org.slim3.datastore.ModelMeta<travelog.model.Entry> {
 

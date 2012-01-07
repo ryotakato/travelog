@@ -49,10 +49,19 @@ public class EntryService {
         return entry;
     }
 
+    /**
+     * エントリーIDからエントリーを取得するメソッド
+     * @param entryId エントリーID
+     * @return 該当エントリー
+     */
     public Entry getEntry(String entryId) {
         return Entry.getEntry(entryId);
     }
 
+    /**
+     * 投稿された全エントリを取得するメソッド
+     * @return 全エントリ（投稿日時降順）
+     */
     public List<Entry> getEntryList() {
         return Datastore.query(meta).sort(meta.postedDate.desc).asList();
     }

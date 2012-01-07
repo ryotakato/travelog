@@ -23,7 +23,6 @@ public class CommentService {
         Entry entry = Entry.getEntry(entryId);
 
         // コメントの作成
-        // TODO コメント投稿者がまだない
         Comment comment = new Comment();
         BeanUtil.copy(input, comment);
 
