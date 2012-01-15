@@ -27,7 +27,7 @@ public class EntryBody implements Serializable {
 
     @Attribute(persistent = false)
     private InverseModelRef<Entry, EntryBody> entryRef
-    = new InverseModelRef<Entry, EntryBody>(Entry.class, EntryMeta.get().bodyRef, this);
+    = new InverseModelRef<Entry, EntryBody>(Entry.class, EntryMeta.get().bodyRef.getName(), this);
 
     /**
      * Returns the key.

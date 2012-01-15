@@ -12,6 +12,7 @@ import org.slim3.datastore.ModelRef;
 import org.slim3.datastore.Sort;
 
 import travelog.meta.CommentMeta;
+import travelog.meta.TagEntryMeta;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Query.SortDirection;
@@ -36,9 +37,13 @@ public class Entry implements Serializable {
     @Attribute(persistent = false)
     private InverseModelListRef<Comment, Entry> commentsRef
     = new InverseModelListRef<Comment, Entry>(
-            Comment.class, CommentMeta.get().modelRef,
+            Comment.class, CommentMeta.get().modelRef.getName(),
             this, new Sort(CommentMeta.get().postedDate, SortDirection.ASCENDING));
 
+    @Attribute(persistent = false)
+    private InverseModelListRef<TagEntry, Entry> tagEntryListRef
+    = new InverseModelListRef<TagEntry, Entry>(TagEntry.class, TagEntryMeta.get().entriesRef.getName(), this);
+    
     /**
      * Returns the key.
      *
@@ -99,6 +104,10 @@ public class Entry implements Serializable {
 
     public InverseModelListRef<Comment, Entry> getCommentsRef() {
         return this.commentsRef;
+    }
+    
+    public InverseModelListRef<TagEntry, Entry> getTagEntryListRef() {
+        return this.tagEntryListRef;
     }
 
     public static Key createKey(String entryId) {

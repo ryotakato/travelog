@@ -1,11 +1,4 @@
-<!-- Indices written at Sat, 7 Jan 2012 13:39:32 UTC -->
+<!-- Indices written at Sat, 14 Jan 2012 02:05:31 JST -->
 
-<datastore-indexes>
+<datastore-indexes/>
 
-    <!-- Used 5 times in query history -->
-    <datastore-index kind="Comment" ancestor="false" source="auto">
-        <property name="modelRef" direction="asc"/>
-        <property name="postedDate" direction="asc"/>
-    </datastore-index>
-
-</datastore-indexes>
