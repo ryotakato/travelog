@@ -8,9 +8,10 @@
 <div id="recent">
 	<h2>Recent Entry</h2>
 	<ul>
-	<c:forEach var="e" items="${entryList}">
+	<c:forEach var="e" items="${recentEntries}">
 		<li><a href="${f:url('viewEntry?id=')}${f:h(e.key.name) }">${f:h(e.title) }</a></li>
 	</c:forEach>
+	<li style="text-align: right;"><a href="#">More...</a>
 	</ul>
 </div>
 <hr/>
