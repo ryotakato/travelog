@@ -24,13 +24,18 @@ input.err { background-color: orange; }
 /* === blog ========= */
 
 #outer {
-	width: auto;
+	width: 95%;
+	height:auto;
 	background-color: white;
 	margin: 10px;
 }
 
+#inner {
+	float:left;
+	width: 100%;
+}
+
 #header{
-	width:auto;
 	background-color: orange;
 }
 
@@ -40,7 +45,7 @@ input.err { background-color: orange; }
 	vertical-align: top;
 	float:left;
 	background-color: white;
-	margin:10px 5px 10px 0px;
+	margin:10px 5px 10px 0px; 
 }
 
 #menu div {
@@ -62,10 +67,8 @@ input.err { background-color: orange; }
 }
 
 #content{
-	width:auto;
-	float:left;
 	background-color: white;
-	margin:10px 0px 10px 5px;
+	margin:10px 0px 10px 210px;
 	padding: 10px;
 }
 

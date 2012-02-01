@@ -10,14 +10,16 @@
 <body>
 
 <div id="outer">
-	<div id="header">
-		<c:import url="header.jsp"/>
-	</div>
-	<div id="menu" >
-		<c:import url="menu.jsp"/>
-	</div>
-	<div id="content">
-		<c:import url="content.jsp"/>
+	<div id="inner">
+		<div id="header">
+			<c:import url="header.jsp"/>
+		</div>
+		<div id="menu" >
+			<c:import url="menu.jsp"/>
+		</div>
+		<div id="content">
+			<c:import url="content.jsp"/>
+		</div>
 	</div>
 </div>
 
