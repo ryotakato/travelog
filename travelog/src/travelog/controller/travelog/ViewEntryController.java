@@ -2,7 +2,6 @@ package travelog.controller.travelog;
 
 import java.util.List;
 
-import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.datastore.EntityNotFoundRuntimeException;
 
@@ -11,13 +10,13 @@ import travelog.model.Entry;
 import travelog.service.CommentService;
 import travelog.service.EntryService;
 
-public class ViewEntryController extends Controller {
+public class ViewEntryController extends BaseController {
 
     private EntryService eService = new EntryService();
     private CommentService cService = new CommentService();
 
     @Override
-    public Navigation run() throws Exception {
+    public Navigation exec() throws Exception {
 
         // ブログ記事のidを特定
         String id = asString("id");
@@ -32,12 +31,13 @@ public class ViewEntryController extends Controller {
             return forward("noEntry.jsp");
         }
 
+        // Get & Set entry body
         requestScope("entry", entry);
         requestScope("body", entry.getBodyRef().getModel());
 
-        // コメント一覧を取得してリクエストに設定
-        List<Comment> commentList = cService.getCommentList(entry);
-        requestScope("commentList", commentList);
+        // Get & Set comments
+        List<Comment> comments = cService.getCommentList(entry);
+        requestScope("comments", comments);
 
         return forward("viewEntry.jsp");
     }

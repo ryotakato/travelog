@@ -147,4 +147,13 @@ public class EntryService {
     public List<Entry> getEntryList() {
         return Datastore.query(meta).sort(meta.postedDate.desc).asList();
     }
+    
+    /**
+     * 投稿されたエントリを取得するメソッド
+     * @param recentCount 取得件数
+     * @return 該当エントリ（投稿日時降順）
+     */
+    public List<Entry> getEntryList(int recentCount) {
+        return Datastore.query(meta).sort(meta.postedDate.desc).limit(recentCount).asList();
+    }
 }

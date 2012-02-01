@@ -2,25 +2,34 @@ package travelog.controller.travelog;
 
 import java.util.List;
 
-import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 
+import travelog.model.Comment;
 import travelog.model.Entry;
-import travelog.model.Tag;
-import travelog.model.TagEntry;
-import travelog.service.EntryService;
-import travelog.service.TagService;
+import travelog.service.CommentService;
 
-public class IndexController extends Controller {
+public class IndexController extends BaseController {
 
-    private EntryService service = new EntryService();
-
+    private CommentService commentService = new CommentService();
+    
     @Override
-    public Navigation run() throws Exception {
+    public Navigation exec() throws Exception {
         
-        // 記事一覧を取得
-        List<Entry> entryList = service.getEntryList();
+        // "recentEntries" is already getted by BaseController#preExec
+        @SuppressWarnings("unchecked")
+        List<Entry> entries = (List<Entry>)requestScope("recentEntries");
         
+        if (!entries.isEmpty()) {
+            Entry entry = entries.get(0);
+            
+            // Get & Set entry body
+            requestScope("entry", entry);
+            requestScope("body", entry.getBodyRef().getModel());
+
+            // Get & Set comments
+            List<Comment> comments = commentService.getCommentList(entry);
+            requestScope("comments", comments);
+        }
         
 //        // タグを取得
 //        for (Entry entry : entryList) {
@@ -48,7 +57,6 @@ public class IndexController extends Controller {
 //        }
 //        requestScope("tagList", tagList);        
         
-        requestScope("entryList", entryList);
         return forward("index.jsp");
     }
 }

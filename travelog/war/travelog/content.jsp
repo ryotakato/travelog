@@ -8,7 +8,7 @@
 <hr/>
 <div>
   <h4>Comments</h4><br/>
-  <c:forEach var="comment" items="${commentList}">
+  <c:forEach var="comment" items="${comments}">
     ${f:br(f:h(comment.content)) }<br/>
     By ${f:h(comment.postedName) }
     <br/>
