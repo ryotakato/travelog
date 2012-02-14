@@ -6,7 +6,9 @@ import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 
 import travelog.model.Entry;
+import travelog.model.Tag;
 import travelog.service.EntryService;
+import travelog.service.TagService;
 
 public abstract class BaseController extends Controller {
 
@@ -24,6 +26,7 @@ public abstract class BaseController extends Controller {
     abstract protected Navigation exec() throws Exception;
     
     private EntryService entryService = new EntryService();
+    private TagService tagService = new TagService();
     
     /**
      * Pre exec() process method
@@ -34,5 +37,8 @@ public abstract class BaseController extends Controller {
         // Get & Set Recent Entries
         List<Entry> entries = entryService.getEntryList(10);
         requestScope("recentEntries", entries);
+        
+        List<Tag> rootCategories = tagService.getRootCategories();
+        requestScope("rootCategories", rootCategories);
     }
 }

@@ -17,13 +17,11 @@
 <hr/>
 <div id="category">
 	<h2>Category</h2>
-<p>aaaaaaaaa</p>
+	<ul>
+	<c:forEach var="t" items="${rootCategories}">
+		<li><a href="${f:url('viewCategory?name=')}${f:h(t.name) }">${f:h(t.name) }</a></li>
+	</c:forEach>
+	</ul>
 </div>
-<%-- 
-<hr/><hr/><hr/><hr/>
 
-<c:forEach var="t" items="${tagList}">
-${f:h(t.name) }
-<hr/>
-</c:forEach>
- --%>
+<hr/><hr/><hr/><hr/>

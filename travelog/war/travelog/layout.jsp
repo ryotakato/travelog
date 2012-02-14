@@ -18,7 +18,7 @@
 			<c:import url="menu.jsp"/>
 		</div>
 		<div id="content">
-			<c:import url="content.jsp"/>
+			<c:import url="${param.contentJsp}"/>
 		</div>
 	</div>
 </div>

@@ -13,4 +13,8 @@ public class TagService {
     public List<Tag> getTagList(String searchText) {
         return Tag.getTagList(searchText);
     }
+
+    public List<Tag> getRootCategories() {
+        return Tag.getRootCategoryList();
+    }
 }

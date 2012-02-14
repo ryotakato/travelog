@@ -2,4 +2,5 @@
 
 <c:import url="layout.jsp">
   <c:param name="title" value="Tavi's Travelog - ${f:h(entry.title) }"/>
+  <c:param name="contentJsp" value="contentEntry.jsp" />
 </c:import>

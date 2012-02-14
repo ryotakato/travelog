@@ -63,6 +63,12 @@ input.err { background-color: orange; }
 	margin-top: 3px;
 }
 
+#menu #category li {
+	font-size:small;
+	list-style-type: none;
+	margin-top: 3px;
+}
+
 #content{
 	background-color: white;
 	margin:10px 0px 10px 210px;

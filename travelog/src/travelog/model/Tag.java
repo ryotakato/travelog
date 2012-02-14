@@ -118,6 +118,14 @@ public class Tag implements Serializable {
                 .sort(meta.name.asc)
                 .asList();
     }
+    
+    public static List<Tag> getRootCategoryList() {
+        TagMeta meta = TagMeta.get();
+        return Datastore.query(meta)
+                .filter(meta.parentTagRef.equal(null))
+                .sort(meta.name.asc)
+                .asList();
+    }
 
     @Override
     public int hashCode() {
