@@ -2,6 +2,7 @@ package travelog.controller.travelog;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.slim3.controller.Navigation;
 import org.slim3.util.StringUtil;
@@ -12,6 +13,9 @@ import travelog.model.TagEntry;
 
 public class ViewCategoryController extends BaseController {
     
+    protected static final Logger logger =
+            Logger.getLogger(ViewCategoryController.class.getName());
+    
     @Override
     protected Navigation exec() throws Exception {
         
@@ -20,12 +24,16 @@ public class ViewCategoryController extends BaseController {
         
         // check empty
         if (StringUtil.isEmpty(reqName)) {
+            // TODO convert log4j ?
+            logger.info("Category Not Found");
             return forward("notExist");
         }
         
         // check exist
         Tag reqTag = Tag.getTag(reqName);
         if (reqTag == null) {
+            // TODO convert log4j ?
+            logger.info("Category Not Found");
             return forward("notExist");            
         }
         
