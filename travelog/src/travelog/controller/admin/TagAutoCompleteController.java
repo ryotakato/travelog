@@ -1,4 +1,4 @@
-package travelog.controller.travelog.ajax;
+package travelog.controller.admin;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -10,7 +10,7 @@ import travelog.model.Tag;
 import travelog.service.TagService;
 
 public class TagAutoCompleteController extends Controller {
-    
+
     private TagService service = new TagService();
     
     protected static final Logger logger =

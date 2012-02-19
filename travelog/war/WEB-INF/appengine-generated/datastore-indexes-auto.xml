@@ -1,14 +1,14 @@
-<!-- Indices written at Tue, 14 Feb 2012 09:10:16 JST -->
+<!-- Indices written at Sun, 19 Feb 2012 16:14:22 JST -->
 
 <datastore-indexes>
 
-    <!-- Used 60 times in query history -->
+    <!-- Used 7 times in query history -->
     <datastore-index kind="Tag" ancestor="false" source="auto">
         <property name="parentTagRef" direction="asc"/>
         <property name="name" direction="asc"/>
     </datastore-index>
 
-    <!-- Used 21 times in query history -->
+    <!-- Used 7 times in query history -->
     <datastore-index kind="Comment" ancestor="false" source="auto">
         <property name="modelRef" direction="asc"/>
         <property name="postedDate" direction="asc"/>
