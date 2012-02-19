@@ -113,7 +113,7 @@ public class Tag implements Serializable {
     public static List<Tag> getTagList(String searchText) {
         TagMeta meta = TagMeta.get();
         return Datastore.query(meta)
-                // TODO startWithsにすべきか、greaterThanOrEqualにすべきか　件数しぼるなら、後者でいい気がする。
+                // TODO startWiths ? or greaterThanOrEqual ? & limit count ?
                 .filter(meta.name.greaterThanOrEqual(searchText))
                 .sort(meta.name.asc)
                 .asList();
