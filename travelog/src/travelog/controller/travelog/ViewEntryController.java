@@ -26,9 +26,9 @@ public class ViewEntryController extends BaseController {
         try {
             entry = eService.getEntry(id);
         } catch (EntityNotFoundRuntimeException e) {
-            // TODO JSP未作成
+            // TODO ログの出し方
             e.printStackTrace();
-            return forward("noEntry.jsp");
+            return forward("notExist");
         }
 
         // Get & Set entry body

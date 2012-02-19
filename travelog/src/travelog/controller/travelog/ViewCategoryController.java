@@ -9,11 +9,8 @@ import org.slim3.util.StringUtil;
 import travelog.model.Entry;
 import travelog.model.Tag;
 import travelog.model.TagEntry;
-import travelog.service.TagService;
 
 public class ViewCategoryController extends BaseController {
-
-    private TagService tService = new TagService();
     
     @Override
     protected Navigation exec() throws Exception {
@@ -21,17 +18,18 @@ public class ViewCategoryController extends BaseController {
         // request category name
         String reqName = asString("name");
         
+        // check empty
         if (StringUtil.isEmpty(reqName)) {
-            // TODO not yet make JSP
-            return forward("noCategory.jsp");
+            return forward("notExist");
         }
         
+        // check exist
         Tag reqTag = Tag.getTag(reqName);
         if (reqTag == null) {
-            // TODO not yet make JSP
-            return forward("noCategory.jsp");            
+            return forward("notExist");            
         }
         
+        // get children tags and get entries
         List<Tag> categories = reqTag.getChildrenTagRef().getModelList();
         List<TagEntry> tagEntries = reqTag.getTagEntryListRef().getModelList();
         List<Entry> entries = new ArrayList<Entry>();
@@ -39,6 +37,7 @@ public class ViewCategoryController extends BaseController {
             entries.add(tagEntry.getEntriesRef().getModel());
         }
         
+        // set to request
         requestScope("categories", categories);
         requestScope("entries", entries);
         
