@@ -17,11 +17,12 @@ public class CommentController extends Controller {
         String entryId = null;
         try {
             entryId = asString("entryId");
+            // post comment 
             service.postComment(new RequestMap(request), entryId);
         } catch (EntityNotFoundRuntimeException e) {
-            // TODO JSP未作成
+            // TODO ログの出し方
             e.printStackTrace();
-            return forward("noEntry.jsp");
+            return forward("notExist");
         }
         return forward("viewEntry?id=" + entryId);
     }
