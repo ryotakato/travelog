@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.slim3.datastore.Datastore;
-import org.slim3.util.BeanUtil;
 import org.slim3.util.DateUtil;
 import org.slim3.util.StringUtil;
 
@@ -38,7 +37,7 @@ public class EntryService {
         // タグが新規かどうかチェック
         for (String tagName : tagArray) {
             if ( ! StringUtil.isEmpty(tagName)) {
-                Tag tag = Tag.getTag(tagName);
+                Tag tag = Tag.getCategory(tagName);
                 // 新規ならtrueを格納
                 newTagArrayMap.put(tagName, tag == null);
             }
@@ -49,60 +48,22 @@ public class EntryService {
     }
 
     /**
-     * 記事投稿の登録処理メソッド
-     * @param input 入力値
-     * @return 登録した記事Model
-     * @throws Exception 例外
+     * Post entry (= Put to DB) method
+     * @param input entry 
+     * @param tags entry relation tags
+     * @return entry after posted
+     * @throws Exception throw DB Exception
      */
-    public Entry postEntry(Map<String, Object> input) throws Exception {
-        
-        // タグの登録
-        
-        // タグ取得
-        String[] tagArray = (String[])input.get("tagArray");
-        
-        List<Tag> tags = new ArrayList<Tag>();
-        for (String tagName : tagArray) {
-            if ( ! StringUtil.isEmpty(tagName)) {
-                // タグが空欄なら登録しない
-                Tag postTag = Tag.getTag(tagName);
-                if (postTag == null) {
-                    // 存在しないタグのみ登録
-                    postTag = new Tag();
-                    postTag.setName(tagName);
-                    
-                    // DB更新
-                    Transaction tx = Datastore.beginTransaction();
-                    try {
-                        // タグの新規作成
-                        Datastore.put(tx, postTag);
-                        tx.commit();
-                    } catch (Exception e) {
-                        if (tx.isActive()) {
-                            tx.rollback();
-                        }
-                        throw e;
-                    }
-                }
-                tags.add(postTag);   
-            }
-        }
+    public Entry postEntry(Entry entry, EntryBody body, List<Tag> tags) throws Exception {
         
         
-        
-        // 記事内容をModelに変換
-        Entry entry = new Entry();
-        EntryBody body = new EntryBody();
-        BeanUtil.copy(input, entry);
-        BeanUtil.copy(input, body);
-        
-        // エンティティグループの作成
-        // TODO パターンはEnum化？
+        // make entity groop
+        // TODO Enum pattern ?
         String entryId = DateUtil.toString(entry.getPostedDate(), "yyyyMMddHHmmss");
         entry.setKey(Entry.createKey(entryId));
         body.setKey(EntryBody.allocateKey(entry.getKey()));
         
-        // 記事とタグの関連付け
+        // relation tag and entry
         List<TagEntry> tagEntries = new ArrayList<TagEntry>(); 
         for (Tag tag : tags) {
             TagEntry tagEntry = new TagEntry();
@@ -113,10 +74,10 @@ public class EntryService {
         }
         
 
-        // 記事本文と関連付け
+        // relation entry head and entry content
         entry.getBodyRef().setModel(body);
 
-        // DB登録
+        // put to DB
         Transaction tx = Datastore.beginTransaction();
         try {
             Datastore.put(tx, entry, body);

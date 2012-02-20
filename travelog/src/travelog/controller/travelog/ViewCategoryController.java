@@ -30,7 +30,7 @@ public class ViewCategoryController extends BaseController {
         }
         
         // check exist
-        Tag reqTag = Tag.getTag(reqName);
+        Tag reqTag = Tag.getCategory(reqName);
         if (reqTag == null) {
             // TODO convert log4j ?
             logger.info("Category Not Found");

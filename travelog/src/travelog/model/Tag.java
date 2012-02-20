@@ -29,6 +29,8 @@ public class Tag implements Serializable {
     
     private String name;
     
+    private boolean period;
+    
     private ModelRef<Tag> parentTagRef = new ModelRef<Tag>(Tag.class);
     
     @Attribute(persistent = false)
@@ -39,7 +41,9 @@ public class Tag implements Serializable {
     
     @Attribute(persistent = false)
     private InverseModelListRef<TagEntry, Tag> tagEntryListRef
-    = new InverseModelListRef<TagEntry, Tag>(TagEntry.class, TagEntryMeta.get().tagsRef.getName(), this);
+    = new InverseModelListRef<TagEntry, Tag>(
+            TagEntry.class, TagEntryMeta.get().tagsRef.getName()
+            , this, new Sort("entriesRef", SortDirection.DESCENDING));
     
 
     /**
@@ -89,6 +93,14 @@ public class Tag implements Serializable {
         this.name = name;
     }
     
+    public boolean isPeriod() {
+        return period;
+    }
+    
+    public void setPeriod(boolean period) {
+        this.period = period;
+    }
+    
     public ModelRef<Tag> getParentTagRef() {
         return this.parentTagRef;
     }
@@ -102,19 +114,24 @@ public class Tag implements Serializable {
     }
     
     
-    public static Tag getTag(String tagName) {
-        TagMeta meta = TagMeta.get();
+    public static Tag getTag(String tagName, Boolean isPeriod) {
+        TagMeta meta = TagMeta.get();    
         Tag tag = Datastore.query(meta)
-                    .filter(meta.name.equal(tagName))
+                    .filter(meta.name.equal(tagName), meta.period.equal(isPeriod))
                     .asSingle();
         return tag;
     }
     
-    public static List<Tag> getTagList(String searchText) {
+    public static Tag getCategory(String categoryName) {
+        return Tag.getTag(categoryName, false);
+    }
+    
+    public static List<Tag> getCategoryList(String searchText) {
         TagMeta meta = TagMeta.get();
         return Datastore.query(meta)
                 // TODO startWiths ? or greaterThanOrEqual ? & limit count ?
-                .filter(meta.name.greaterThanOrEqual(searchText))
+                // exclude period tag
+                .filter(meta.name.greaterThanOrEqual(searchText), meta.period.equal(false))
                 .sort(meta.name.asc)
                 .asList();
     }
@@ -122,7 +139,8 @@ public class Tag implements Serializable {
     public static List<Tag> getRootCategoryList() {
         TagMeta meta = TagMeta.get();
         return Datastore.query(meta)
-                .filter(meta.parentTagRef.equal(null))
+                // exclude period tag
+                .filter(meta.parentTagRef.equal(null), meta.period.equal(false))
                 .sort(meta.name.asc)
                 .asList();
     }
