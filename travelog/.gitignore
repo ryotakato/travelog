@@ -1,3 +1,4 @@
 src/travelog/meta/
 war/WEB-INF/classes
-
+datastore-indexes-auto.xml
+local_db.bin
