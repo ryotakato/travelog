@@ -31,6 +31,8 @@ public class TagAutoCompleteController extends Controller {
             tagNames.append(tags.get(i).getName()).append(",");
         }
         
+        logger.info(tagNames.toString());
+        
         // レスポンスに書き込み
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(tagNames.toString());
