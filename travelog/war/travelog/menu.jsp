@@ -11,7 +11,9 @@
 	<c:forEach var="e" items="${recentEntries}">
 		<li><a href="${f:url('viewEntry?id=')}${f:h(e.key.name) }">${f:h(e.title) }</a></li>
 	</c:forEach>
-	<li style="text-align: right;"><a href="#">More...</a>
+	<li style="text-align: right;">
+		<a href="${f:url('viewArchive?year=')}<fmt:formatDate value="${recentEntries[0].postedDate}" pattern="yyyy" />">More...</a>
+	</li>
 	</ul>
 </div>
 <hr/>
@@ -24,4 +26,9 @@
 	</ul>
 </div>
 
+<hr/>
+
+<div id="powered">
+	<img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" />
+</div>
 <hr/>

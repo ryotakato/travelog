@@ -69,6 +69,10 @@ input.err { background-color: orange; }
 	margin-top: 3px;
 }
 
+#menu #powered {
+	text-align: center;
+}
+
 #content{
 	background-color: white;
 	margin:10px 0px 10px 210px;
