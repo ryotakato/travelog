@@ -2,7 +2,8 @@
 
 <div id="author">
 	<h2>Author</h2>
-<p>aaaaaaaaa</p>
+	<img src="xxx" alt="" width="120" height="60">
+	<p>aaaaaaaaa</p>
 </div>
 <hr/>
 <div id="recent">
