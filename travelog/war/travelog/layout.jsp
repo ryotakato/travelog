@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>${param.title}</title>
 <link rel="stylesheet" type="style/css" href="/css/global.css" />
+
 </head>
 
 <body>

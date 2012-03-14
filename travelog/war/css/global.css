@@ -36,6 +36,12 @@ input.err { background-color: orange; }
 	background-color: orange;
 }
 
+#header img{
+	margin:0;
+	
+	clip:rect(200px 0px 600px 900px);
+}
+
 #menu{
 	width:200px;
 	text-align:left;

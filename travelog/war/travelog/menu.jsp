@@ -2,7 +2,7 @@
 
 <div id="author">
 	<h2>Author</h2>
-	<img src="xxx" alt="" width="120" height="60">
+	<img id="aboutMe" src="aboutme_s.jpg" alt="" width="120" height="80" >
 	<p>aaaaaaaaa</p>
 </div>
 <hr/>
