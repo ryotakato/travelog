@@ -3,7 +3,7 @@
 <div id="author">
 	<h2>Author</h2>
 	<img id="aboutMe" src="aboutme_s.jpg" alt="" title="" width="120" height="80" >
-	<p>aaaaaaaaa</p>
+	<p><a href="aboutMe">Tavi</a></p>
 </div>
 <hr/>
 <div id="recent">
