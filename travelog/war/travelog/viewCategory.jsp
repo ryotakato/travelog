@@ -2,7 +2,7 @@
 
 <c:import url="layout.jsp">
   <c:param name="title" value="Tavi's Travelog - ${f:h(name) }"/>
-  <c:param name="contentJsp">
+  <c:param name="content">
     <div>
       <h4>Category</h4>
         <c:forEach var="category" items="${categories}">

@@ -2,7 +2,7 @@
 
 <c:import url="layout.jsp">
   <c:param name="title" value="Tavi's Travelog - ${f:h(year) }"/>
-  <c:param name="contentJsp">
+  <c:param name="content">
     <div>
       <h3>${f:h(year) }</h3>
     </div>

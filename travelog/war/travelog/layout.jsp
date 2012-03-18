@@ -30,11 +30,11 @@ ${param.javascript}
 		<div id="header">
 			<c:import url="header.jsp"/>
 		</div>
-		<div id="menu" >
+		<div id="menu">
 			<c:import url="menu.jsp"/>
 		</div>
 		<div id="content">
-			${param.contentJsp}
+			${param.content}
 		</div>
 	</div>
 </div>
