@@ -34,7 +34,7 @@ ${param.javascript}
 			<c:import url="menu.jsp"/>
 		</div>
 		<div id="content">
-			<c:import url="${param.contentJsp}"/>
+			${param.contentJsp}
 		</div>
 	</div>
 </div>
