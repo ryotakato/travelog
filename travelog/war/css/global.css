@@ -33,14 +33,16 @@ input.err { background-color: orange; }
 }
 
 #header{
-	background-color: orange;
+	background-color: #FFAF00;
 }
 
 #header img{
 	margin:0;
-	
 	clip:rect(200px 0px 600px 900px);
 }
+
+#header a:link{ color:black }
+#header a:visited{ color:black }
 
 #menu{
 	width:200px;
@@ -83,6 +85,15 @@ input.err { background-color: orange; }
 	background-color: white;
 	margin:10px 0px 10px 210px;
 	padding: 10px;
+}
+
+#content #entry-comments .about-comment{
+	font-size:small;
+}
+
+#content #entry-post-comment textarea {
+	width:50%;
+	height:7em;
 }
 
 #footer{
