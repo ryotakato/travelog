@@ -3,6 +3,15 @@
 	<application>tavi-travelog</application>
 	<version>1</version>
 	
+	<static-files>
+	    <include path="/css/**.css"/>
+	    <include path="/css/**.gif"/>
+	    <include path="/js/**.js"/>
+	    <include path="/img/**.jpg"/>
+	    <include path="/img/**.png"/>
+	    <include path="/favicon.ico" />
+	</static-files>
+	
 	<precompilation-enabled>true</precompilation-enabled>
 	
 	<system-properties>

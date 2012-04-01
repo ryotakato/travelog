@@ -11,10 +11,10 @@
 $(document).ready(function(){
 	$("#aboutMe").hover(
 		function() {
-			$(this).attr('src','aboutme_s_hover.jpg');
+			$(this).attr('src','/img/aboutme_s_hover.jpg');
 		},
 		function() {
-			$(this).attr('src','aboutme_s.jpg');
+			$(this).attr('src','/img/aboutme_s.jpg');
 		}
 	);
 });

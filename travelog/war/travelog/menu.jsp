@@ -2,7 +2,7 @@
 
 <div id="author">
 	<h2>Author</h2>
-	<a href="aboutMe"><img id="aboutMe" src="aboutme_s.jpg" alt="" title="" width="120" height="80" ></a>
+	<a href="aboutMe"><img id="aboutMe" src="/img/aboutme_s.jpg" alt="" title="" width="120" height="80" ></a>
 	<p><a href="aboutMe">tavi</a></p>
 </div>
 <hr/>
