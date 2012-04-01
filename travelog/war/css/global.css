@@ -7,8 +7,8 @@ body {
 }
 
 h1 { 
-	height: 33px;
-	font-size: x-large;
+	height: 40px;
+	font-size: xx-large;
 	font-family: "Times New Roman", Times, serif;
 }
 
@@ -33,12 +33,16 @@ input.err { background-color: orange; }
 }
 
 #header{
-	background-color: #FFAF00;
+	border-radius: 1em;	
 }
 
 #header img{
 	margin:0;
 	clip:rect(200px 0px 600px 900px);
+}
+
+#header #blog-title {
+	text-indent: 10px;
 }
 
 #header a:link{ color:black }
@@ -51,6 +55,7 @@ input.err { background-color: orange; }
 	float:left;
 	background-color: white;
 	margin:10px 5px 10px 0px; 
+	border-radius: 1em;	
 }
 
 #menu div {
@@ -85,6 +90,7 @@ input.err { background-color: orange; }
 	background-color: white;
 	margin:10px 0px 10px 210px;
 	padding: 10px;
+	border-radius: 1em;	
 }
 
 #content #entry-comments .about-comment{
