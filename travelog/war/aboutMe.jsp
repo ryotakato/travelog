@@ -25,18 +25,18 @@
       <br/>
       <p><strong>性別</strong> : 男</p>
       <br/>
-      <p><strong>成分</strong> : メガネ 100%</p>
+      <p><strong>成分</strong> : メガネ 80%、本 20%</p>
       <br/>
       <p><strong>将来の夢</strong> : 世界一周</p>
       <br/>
-      <p><strong>趣味</strong> : プログラミング</p>
+      <p><strong>趣味</strong> : プログラミング、読書</p>
       <br/>
     </div>
     <br/>
     <div>
       <h3>■本ブログについて</h3>
       <br/>
-      <p><strong>対応ブラウザ</strong> : Chrome 17.0 +, Safari 5.1 +, 他未確認　だが、IE6、おめーはだめだ。</p>
+      <p><strong>対応ブラウザ</strong> : Chrome 17.0 +, Safari 5.1 +, 他未確認だけど、FireFoxとかならいけると思う。だが、IE6、おめーはだめだ。</p>
       <br/>
       <p><strong>JavaScript</strong> : OFFだと、色々崩れます。</p>
       <br/>

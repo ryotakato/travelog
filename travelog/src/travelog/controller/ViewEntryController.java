@@ -1,4 +1,4 @@
-package travelog.controller.travelog;
+package travelog.controller;
 
 import java.util.List;
 import java.util.logging.Logger;

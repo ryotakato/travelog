@@ -1,7 +1,9 @@
-package travelog.controller.travelog;
+package travelog.controller;
 
 import org.slim3.tester.ControllerTestCase;
 import org.junit.Test;
+
+import travelog.controller.NotExistController;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 

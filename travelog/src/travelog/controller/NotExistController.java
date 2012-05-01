@@ -1,4 +1,4 @@
-package travelog.controller.travelog;
+package travelog.controller;
 
 import org.slim3.controller.Navigation;
 

@@ -1,4 +1,4 @@
-package travelog.controller.travelog;
+package travelog.controller;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.slim3.datastore.Datastore;
 import org.slim3.tester.ControllerTestCase;
 
+import travelog.controller.CommentController;
 import travelog.model.Comment;
 
 public class CommentControllerTest extends ControllerTestCase {
