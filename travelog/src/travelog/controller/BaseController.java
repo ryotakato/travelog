@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
+import org.slim3.memcache.Memcache;
 
 import travelog.model.Entry;
 import travelog.model.Tag;
@@ -28,6 +29,8 @@ public abstract class BaseController extends Controller {
     private EntryService entryService = new EntryService();
     private TagService tagService = new TagService();
     
+    protected String memcacheRecentEntriesKey = "recentEntries";
+    
     /**
      * Pre exec() process method
      * @throws Exception
@@ -35,7 +38,15 @@ public abstract class BaseController extends Controller {
     private void preExec() throws Exception {
         
         // Get & Set Recent Entries
-        List<Entry> entries = entryService.getEntryList(10);
+        List<Entry> entries = null;
+        
+        if (Memcache.contains(memcacheRecentEntriesKey)) {
+            entries  = Memcache.get(memcacheRecentEntriesKey);
+        } else {
+            entries  = entryService.getEntryList(10);
+            Memcache.put(memcacheRecentEntriesKey, entries);
+        }
+        
         requestScope("recentEntries", entries);
         
         List<Tag> rootCategories = tagService.getRootCategories();

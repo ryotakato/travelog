@@ -7,6 +7,7 @@ import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.util.BeanUtil;
 import org.slim3.util.RequestMap;
+import org.slim3.memcache.Memcache;
 
 import travelog.model.Entry;
 import travelog.model.EntryBody;
@@ -38,6 +39,10 @@ public class PostedEntryController extends Controller {
         
         // post entry
         eService.postEntry(entry, body, tags);
+        
+        // update memcache recent entries 
+        // TODO key to const?
+        Memcache.put("recentEntries", eService.getEntryList(10));
         
         return forward("postedEntry.jsp");
     }
