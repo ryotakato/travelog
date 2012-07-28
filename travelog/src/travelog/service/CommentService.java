@@ -1,5 +1,6 @@
 package travelog.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,8 @@ import travelog.model.Comment;
 import travelog.model.Entry;
 
 import com.google.appengine.api.datastore.Transaction;
+import com.google.appengine.api.mail.MailService.Message;
+import com.google.appengine.api.mail.MailServiceFactory;
 
 
 public class CommentService {
@@ -19,21 +22,23 @@ public class CommentService {
 
     public Comment postComment(Map<String, Object> input, String entryId) throws Exception {
 
-        // 記事の取得
+        // get entry
         Entry entry = Entry.getEntry(entryId);
 
-        // コメントの作成
+        // make comment object
         Comment comment = new Comment();
         BeanUtil.copy(input, comment);
 
-        // コメントと記事の関連付け
+        // relation of comment & entry
         comment.getModelRef().setModel(entry);
 
-        // DB登録
+        // DB access
         Transaction tx = Datastore.beginTransaction();
         try {
             Datastore.put(tx, comment);
             tx.commit();
+            // send mail
+            sendMail(comment, entry);
         } catch (Exception e) {
             if (tx.isActive()) {
                 tx.rollback();
@@ -44,9 +49,29 @@ public class CommentService {
 
         return comment;
     }
+    
+    private final static String LF = System.getProperty("line.separator");
+    
+    private void sendMail(Comment c, Entry e) throws IOException {
+        
+        // make mail message
+        StringBuilder sb = new StringBuilder();
+        sb.append("記事：").append(e.getTitle()).append(LF);
+        sb.append("投稿者：").append(c.getPostedName()).append(LF);
+        sb.append("コメント：").append(c.getContent()).append(LF);
+        sb.append("投稿日時：").append(c.getPostedDate()).append(LF);
+        
+        Message m = new Message();
+        m.setSender("system@tavi-travelog.appspotmail.com");
+        m.setSubject("Tavi's Travelog Comment Posted");
+        m.setTextBody(sb.toString());
+        // send to admin
+        MailServiceFactory.getMailService().sendToAdmins(m);
+    }
 
 
     public List<Comment> getCommentList(Entry entry) {
         return entry.getCommentsRef().getModelList();
     }
+    
 }
