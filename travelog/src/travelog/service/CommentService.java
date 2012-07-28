@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.slim3.datastore.Datastore;
 import org.slim3.util.BeanUtil;
+import org.slim3.util.DateUtil;
 
 import travelog.meta.CommentMeta;
 import travelog.model.Comment;
@@ -59,7 +60,10 @@ public class CommentService {
         sb.append("記事：").append(e.getTitle()).append(LF);
         sb.append("投稿者：").append(c.getPostedName()).append(LF);
         sb.append("コメント：").append(c.getContent()).append(LF);
-        sb.append("投稿日時：").append(c.getPostedDate()).append(LF);
+        // TODO Enum pattern ?
+        sb.append("投稿日時：")
+        .append(DateUtil.toString(c.getPostedDate(), "yyyy-MM-dd HH:mm:ss"))
+        .append(LF);
         
         Message m = new Message();
         m.setSender("system@tavi-travelog.appspotmail.com");
