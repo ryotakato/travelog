@@ -1,7 +1,7 @@
 <%@page import="com.sun.tools.internal.ws.wsdl.document.Import"%>
 <%@page pageEncoding="UTF-8" isELIgnored="false" session="false"%>
 
-<c:import url="layout.jsp">
+<c:import url="/common/layout.jsp">
   <c:param name="title" value="Tavi's Travelog - About Me"/>
   <c:param name="content">
     <div>

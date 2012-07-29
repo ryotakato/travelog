@@ -28,10 +28,10 @@ ${param.javascript}
 <div id="outer">
 	<div id="inner">
 		<div id="header">
-			<c:import url="header.jsp"/>
+			<c:import url="/common/header.jsp"/>
 		</div>
 		<div id="menu">
-			<c:import url="menu.jsp"/>
+			<c:import url="/common/menu.jsp"/>
 		</div>
 		<div id="content">
 			${param.content}
