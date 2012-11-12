@@ -10,6 +10,7 @@
 	    <include path="/img/**.jpg"/>
 	    <include path="/img/**.png"/>
 	    <include path="/favicon.ico" />
+	    <include path="/robots.txt" />
 	</static-files>
 	
 	<precompilation-enabled>true</precompilation-enabled>
