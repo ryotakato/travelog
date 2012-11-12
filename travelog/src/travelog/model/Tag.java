@@ -129,9 +129,9 @@ public class Tag implements Serializable {
     public static List<Tag> getCategoryList(String searchText) {
         TagMeta meta = TagMeta.get();
         return Datastore.query(meta)
-                // TODO startWiths ? or greaterThanOrEqual ? & limit count ?
                 // exclude period tag
-                .filter(meta.name.greaterThanOrEqual(searchText), meta.period.equal(false))
+                // serchtext is toUpperCase because uppercase is first than lowercase in asc sort
+                .filter(meta.name.greaterThanOrEqual(searchText.toUpperCase()), meta.period.equal(false))
                 .sort(meta.name.asc)
                 .asList();
     }
