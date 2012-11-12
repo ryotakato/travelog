@@ -3,7 +3,7 @@
 <div id="author">
 	<h2>Author</h2>
 	<a href="aboutMe"><img id="aboutMe" src="/img/aboutme_s.jpg" alt="" title="" width="120" height="80" ></a>
-	<p><a href="aboutMe">tavi</a></p>
+	<p><a href="/aboutMe">tavi</a></p>
 </div>
 <hr/>
 <div id="recent">
@@ -13,7 +13,7 @@
 		<li><a href="${f:url('viewEntry?id=')}${f:h(e.key.name) }">${f:h(e.title) }</a></li>
 	</c:forEach>
 	<li style="text-align: right;">
-		<a href="${f:url('viewArchive?year=')}<fmt:formatDate value="${recentEntries[0].postedDate}" pattern="yyyy" />">More...</a>
+		<a href="${f:url('/viewArchive?year=')}${f:h(recentYear)}">More...</a>
 	</li>
 	</ul>
 </div>

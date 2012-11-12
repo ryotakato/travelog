@@ -5,6 +5,7 @@ import java.util.List;
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.memcache.Memcache;
+import org.slim3.util.DateUtil;
 
 import travelog.model.Entry;
 import travelog.model.Tag;
@@ -48,6 +49,8 @@ public abstract class BaseController extends Controller {
         }
         
         requestScope("recentEntries", entries);
+        // TODO Enum pattern ?
+        requestScope("recentYear", DateUtil.toString(entries.get(0).getPostedDate(), "yyyy"));
         
         List<Tag> rootCategories = tagService.getRootCategories();
         requestScope("rootCategories", rootCategories);
