@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>travelog PostEntry</title>
+<title>Tavi's Travelog - Post Entry</title>
 <link rel="stylesheet" type="style/css" href="/css/global.css" />
 <link rel="stylesheet" type="text/css" href="/css/jquery.autocomplete.css" />
 <script type="text/javascript" lang="javascript" src="/js/jquery-1.6.4.js" ></script>

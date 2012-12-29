@@ -5,6 +5,8 @@ import java.io.Serializable;
 import com.google.appengine.api.datastore.Key;
 
 import org.slim3.datastore.Attribute;
+import org.slim3.datastore.Datastore;
+import org.slim3.datastore.EntityNotFoundRuntimeException;
 import org.slim3.datastore.Model;
 
 @Model(schemaVersion = 1)
@@ -17,6 +19,9 @@ public class Image implements Serializable {
 
     @Attribute(version = true)
     private Long version;
+    
+    @Attribute(lob = true)
+    private byte[] data;
 
     /**
      * Returns the key.
@@ -84,5 +89,32 @@ public class Image implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
+    
+    public static Key createKey(String imageId) {
+        if (imageId == null) {
+            throw new IllegalArgumentException("imageId is null");
+        }
+        return Datastore.createKey(Image.class, imageId);
+    }
+
+    public static Image getImage(String imageId) {
+        Image e = null;
+        Key imageKey = null;
+        try {
+            imageKey = Image.createKey(imageId);
+            e = Datastore.get(Image.class, imageKey);
+        } catch (IllegalArgumentException iae) {
+            throw new EntityNotFoundRuntimeException(imageKey);
+        }
+        return e;
     }
 }

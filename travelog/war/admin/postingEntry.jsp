@@ -1,7 +1,7 @@
 <%@page pageEncoding="UTF-8" isELIgnored="false" session="false"%>
 
 <c:import url="/common/layout.jsp">
-  <c:param name="title" value="Tavi's Travelog - PostingEntry"/>
+  <c:param name="title" value="Tavi's Travelog - Posting Entry"/>
   <c:param name="javascript">
     <script type="text/javascript" lang="javascript">
     <!--
