@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>travelog PostedEntry</title>
+<title>Tavi's Travelog - Posted Entry</title>
 <link rel="stylesheet" type="style/css" href="/css/global.css" />
 </head>
 <body>
