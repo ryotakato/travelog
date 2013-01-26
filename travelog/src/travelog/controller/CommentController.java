@@ -18,8 +18,15 @@ public class CommentController extends Controller {
 
     @Override
     public Navigation run() throws Exception {
-
+        
+        // protect from spam
+        String protect = asString("protect");
+        if (!"protect".equals(protect)) {
+            return null;
+        }
+        
         String entryId = asString("entryId");
+        
         try {
             // post comment 
             service.postComment(new RequestMap(request), entryId);

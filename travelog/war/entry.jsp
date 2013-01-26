@@ -24,13 +24,14 @@
 <hr/>
 <div id="entry-post-comment">
   <h4>Post Comment</h4>
-  <form method="post" action="comment">
+  <form id="comment-form" method="post" action="comment">
     <p>Name:</p>
     <input type="text" name="postedName" /><br/>
     <p>Comment:</p>
     <textarea name="content"></textarea><br/>
     <input type="hidden" name="entryId" value="${f:h(entry.key.name)}">
+    <input type="hidden" name="protect" value="a">
     <br/>
-    <input type="submit" value="Post">
+    <button id="comment-button" style="width:70px;">Post</button>
   </form>
 </div>
